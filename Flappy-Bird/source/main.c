@@ -12,17 +12,7 @@
 
 int main(void)
 {
-
-    // MAIN and SUB engine configuration
-    REG_DISPCNT = MODE_0_2D | DISPLAY_BG0_ACTIVE;
-    REG_DISPCNT_SUB = MODE_5_2D | DISPLAY_BG0_ACTIVE;
-
-    // Configure and fill BG0
-    P_Graphics_setup_main();
-    P_Graphics_setup_sub();
-
-    // Configure sprites
-    P_Graphics_setup_sprites();
+    P_GL_initGame();
 
     while (1)
     {
@@ -31,4 +21,6 @@ int main(void)
         // Update the sprites
         oamUpdate(&oamMain);
     }
+
+    return 0;
 }
