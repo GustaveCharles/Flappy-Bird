@@ -2,9 +2,11 @@
 #include "P_Graphics.h"
 #include "sky.h"
 #include "bird.h"
+#include "over.h"
 
 //Pointer to the graphic buffer where to store the sprite
 u16* gfx;
+u16* over;
 
 void P_Graphics_setup_main(){
     	//Activate and configure VRAM bank to work in background mode
@@ -44,8 +46,12 @@ void P_Graphics_setup_sprites(){
 
 	//Allocate space for the graphic to show in the sprite
 	gfx = oamAllocateGfx(&oamMain, SpriteSize_32x32, SpriteColorFormat_256Color);
+	over = oamAllocateGfx(&oamMain, SpriteSize_64x32, SpriteColorFormat_256Color);
 
 	//Copy data for the graphic (palette and bitmap)
 	swiCopy(birdPal, SPRITE_PALETTE, birdPalLen/2);
 	swiCopy(birdTiles, gfx, birdTilesLen/2);
+
+	swiCopy(overPal, &SPRITE_PALETTE[birdPalLen/2], overPalLen/2);
+	swiCopy(overTiles, over, overTilesLen/2);
 }

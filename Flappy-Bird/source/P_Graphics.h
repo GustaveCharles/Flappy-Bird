@@ -6,6 +6,7 @@
 #define TILES
 
 extern u16* gfx;
+extern u16* over;
 
 void P_Graphics_setup_main();
 

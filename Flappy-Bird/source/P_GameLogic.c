@@ -79,7 +79,12 @@ void P_GL_updateGame()
 
         if (BirdySpeed < 4)
             BirdySpeed += 0.1;
-
+        if (
+            (Birdy < 0) ||
+            (Birdy > 192 - 32))
+        {
+            Gameplay_state = 2;
+        } else {
         Birdy += BirdySpeed;
 
         oamSet(&oamMain,                   // oam handler
@@ -96,9 +101,38 @@ void P_GL_updateGame()
                false, false,               // Horizontal or vertical flip
                false                       // Mosaic
         );
+        }
     }
     else if (Gameplay_state == 2)
     {
+        oamSet(&oamMain,                   // oam handler
+               0,                          // Number of sprite
+               Birdx, Birdy,               // Coordinates
+               0,                          // Priority
+               0,                          // Palette to use
+               SpriteSize_32x32,           // Sprite size
+               SpriteColorFormat_256Color, // Color format
+               gfx,                        // Loaded graphic to display
+               -1,                         // Affine rotation to use (-1 none)
+               false,                      // Double size if rotating
+               true,                      // Hide this sprite
+               false, false,               // Horizontal or vertical flip
+               false                       // Mosaic
+        );
+        oamSet(&oamMain,                   // oam handler
+           0,                          // Number of sprite
+           0, 0,               // Coordinates
+           0,                          // Priority
+           0,                          // Palette to use
+           SpriteSize_64x32,           // Sprite size
+           SpriteColorFormat_256Color, // Color format
+           over,                        // Loaded graphic to display
+           -1,                         // Affine rotation to use (-1 none)
+           false,                      // Double size if rotating
+           false,                      // Hide this sprite
+           false, false,               // Horizontal or vertical flip
+           false                       // Mosaic
+    );
        // P_GL_updateGameOver();
     }
 }
