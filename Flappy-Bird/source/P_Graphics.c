@@ -1,7 +1,7 @@
 #include <nds.h>
 #include "P_Graphics.h"
-#include "field.h"
-#include "ball.h"
+#include "sky.h"
+#include "bird.h"
 
 //Pointer to the graphic buffer where to store the sprite
 u16* gfx;
@@ -14,9 +14,9 @@ void P_Graphics_setup_main(){
 	BGCTRL[0] = BG_COLOR_256 | BG_MAP_BASE(0) | BG_TILE_BASE(1) | BG_32x32;
 
 	//Copy data to display background (tiles, palette and map)
-	swiCopy(fieldTiles, BG_TILE_RAM(1), fieldTilesLen/2);
-	swiCopy(fieldPal, BG_PALETTE, fieldPalLen/2);
-	swiCopy(fieldMap, BG_MAP_RAM(0), fieldMapLen/2);
+	swiCopy(skyTiles, BG_TILE_RAM(1), skyTilesLen/2);
+	swiCopy(skyPal, BG_PALETTE, skyPalLen/2);
+	swiCopy(skyMap, BG_MAP_RAM(0), skyMapLen/2);
 }
 
 void P_Graphics_setup_sub(){
@@ -26,9 +26,9 @@ void P_Graphics_setup_sub(){
     BGCTRL_SUB[0] = BG_COLOR_256 | BG_MAP_BASE(0) | BG_TILE_BASE(1) | BG_32x32;
 
     //Copy data to display background (tiles, palette and map)
-    swiCopy(fieldTiles, BG_TILE_RAM_SUB(1), fieldTilesLen/2);
-    swiCopy(fieldPal, BG_PALETTE_SUB, fieldPalLen/2);
-    swiCopy(fieldMap, BG_MAP_RAM_SUB(0), fieldMapLen/2);
+    swiCopy(skyTiles, BG_TILE_RAM_SUB(1), skyTilesLen/2);
+    swiCopy(skyPal, BG_PALETTE_SUB, skyPalLen/2);
+    swiCopy(skyMap, BG_MAP_RAM_SUB(0), skyMapLen/2);
 }
 
 void P_Graphics_setup_menu();
@@ -46,6 +46,6 @@ void P_Graphics_setup_sprites(){
 	gfx = oamAllocateGfx(&oamMain, SpriteSize_32x32, SpriteColorFormat_256Color);
 
 	//Copy data for the graphic (palette and bitmap)
-	swiCopy(ballPal, SPRITE_PALETTE, ballPalLen/2);
-	swiCopy(ballTiles, gfx, ballTilesLen/2);
+	swiCopy(birdPal, SPRITE_PALETTE, birdPalLen/2);
+	swiCopy(birdTiles, gfx, birdTilesLen/2);
 }
