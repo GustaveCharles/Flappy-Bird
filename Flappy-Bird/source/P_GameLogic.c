@@ -120,10 +120,10 @@ void P_GL_updateGame()
                false                       // Mosaic
         );
         oamSet(&oamMain,                   // oam handler
-           0,                          // Number of sprite
+           1,                          // Number of sprite
            0, 0,               // Coordinates
            0,                          // Priority
-           0,                          // Palette to use
+           1,                          // Palette to use
            SpriteSize_64x32,           // Sprite size
            SpriteColorFormat_256Color, // Color format
            over,                        // Loaded graphic to display

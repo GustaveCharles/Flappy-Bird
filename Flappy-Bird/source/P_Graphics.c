@@ -52,6 +52,6 @@ void P_Graphics_setup_sprites(){
 	swiCopy(birdPal, SPRITE_PALETTE, birdPalLen/2);
 	swiCopy(birdTiles, gfx, birdTilesLen/2);
 
-	swiCopy(overPal, &SPRITE_PALETTE[birdPalLen/2], overPalLen/2);
+	swiCopy(overPal, &SPRITE_PALETTE[birdPalLen], overPalLen/2);
 	swiCopy(overTiles, over, overTilesLen/2);
 }
