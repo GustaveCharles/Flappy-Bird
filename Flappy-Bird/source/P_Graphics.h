@@ -7,6 +7,7 @@
 
 extern u16* gfx;
 extern u16* over;
+extern u16* tube;
 
 void P_Graphics_setup_main();
 
