@@ -1,6 +1,7 @@
 
 #include <nds.h>
 #include "P_Graphics.h"
+#include "P_Audio.h"
 
 #define DefaultBirdxPos 50
 #define DefaultBirdyPos 80

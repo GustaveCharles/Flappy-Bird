@@ -1,5 +1,6 @@
 #include "P_GameLogic.h"
 
+
 float Birdx = DefaultBirdxPos;
 float Birdy = DefaultBirdyPos;
 float gravity = -9.8f;
@@ -24,7 +25,8 @@ void P_GL_initGame()
 
     // Configure and fill BG0
     P_Graphics_setup_main();
-    P_Graphics_setup_sub();
+    //P_Graphics_setup_sub();
+    Audio_Init();
 
     // Configure sprites
     P_Graphics_setup_sprites();
@@ -66,6 +68,7 @@ void P_GL_updateGame()
         if (keys & KEY_DOWN)
         {
             Gameplay_state = 1;
+            mmEffect(SFX_JUMP);
         }
     }
     else if (Gameplay_state == 1)
@@ -75,6 +78,7 @@ void P_GL_updateGame()
         if ((keys & KEY_UP))
         {
             BirdySpeed = -3;
+            mmEffect(SFX_JUMP);
         }
 
         if (BirdySpeed < 4)
@@ -84,23 +88,25 @@ void P_GL_updateGame()
             (Birdy > 192 - 32))
         {
             Gameplay_state = 2;
-        } else {
-        Birdy += BirdySpeed;
+        }
+        else
+        {
+            Birdy += BirdySpeed;
 
-        oamSet(&oamMain,                   // oam handler
-               0,                          // Number of sprite
-               Birdx, Birdy,               // Coordinates
-               0,                          // Priority
-               0,                          // Palette to use
-               SpriteSize_32x32,           // Sprite size
-               SpriteColorFormat_256Color, // Color format
-               gfx,                        // Loaded graphic to display
-               -1,                         // Affine rotation to use (-1 none)
-               false,                      // Double size if rotating
-               false,                      // Hide this sprite
-               false, false,               // Horizontal or vertical flip
-               false                       // Mosaic
-        );
+            oamSet(&oamMain,                   // oam handler
+                   0,                          // Number of sprite
+                   Birdx, Birdy,               // Coordinates
+                   0,                          // Priority
+                   0,                          // Palette to use
+                   SpriteSize_32x32,           // Sprite size
+                   SpriteColorFormat_256Color, // Color format
+                   gfx,                        // Loaded graphic to display
+                   -1,                         // Affine rotation to use (-1 none)
+                   false,                      // Double size if rotating
+                   false,                      // Hide this sprite
+                   false, false,               // Horizontal or vertical flip
+                   false                       // Mosaic
+            );
         }
     }
     else if (Gameplay_state == 2)
@@ -115,25 +121,25 @@ void P_GL_updateGame()
                gfx,                        // Loaded graphic to display
                -1,                         // Affine rotation to use (-1 none)
                false,                      // Double size if rotating
-               true,                      // Hide this sprite
+               true,                       // Hide this sprite
                false, false,               // Horizontal or vertical flip
                false                       // Mosaic
         );
         oamSet(&oamMain,                   // oam handler
-           1,                          // Number of sprite
-           0, 0,               // Coordinates
-           0,                          // Priority
-           1,                          // Palette to use
-           SpriteSize_64x32,           // Sprite size
-           SpriteColorFormat_256Color, // Color format
-           over,                        // Loaded graphic to display
-           -1,                         // Affine rotation to use (-1 none)
-           false,                      // Double size if rotating
-           false,                      // Hide this sprite
-           false, false,               // Horizontal or vertical flip
-           false                       // Mosaic
-    );
-       // P_GL_updateGameOver();
+               1,                          // Number of sprite
+               0, 0,                       // Coordinates
+               0,                          // Priority
+               1,                          // Palette to use
+               SpriteSize_64x32,           // Sprite size
+               SpriteColorFormat_256Color, // Color format
+               over,                       // Loaded graphic to display
+               -1,                         // Affine rotation to use (-1 none)
+               false,                      // Double size if rotating
+               false,                      // Hide this sprite
+               false, false,               // Horizontal or vertical flip
+               false                       // Mosaic
+        );
+        // P_GL_updateGameOver();
     }
 }
 
