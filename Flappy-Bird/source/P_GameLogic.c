@@ -5,7 +5,7 @@ float Birdy = DefaultBirdyPos;
 float gravity = -9.8f;
 int strength = 5;
 float BirdySpeed;
-float GameSpeedx = 0.3f;
+float GameSpeedx = 0.5f;
 
 int Gameplay_state;
 int Gameplay_playerScore;
@@ -56,8 +56,8 @@ void P_GL_initGame()
                2,                          // Number of sprite
                tubesAx[i], tubesAy[i],               // Coordinates
                0,                          // Priority
-               2,                          // Palette to use
-               SpriteSize_16x32,           // Sprite size
+               0,                          // Palette to use
+               SpriteSize_32x64,           // Sprite size
                SpriteColorFormat_256Color, // Color format
                tube,                        // Loaded graphic to display
                -1,                         // Affine rotation to use (-1 none)
@@ -71,8 +71,8 @@ void P_GL_initGame()
                2,                          // Number of sprite
                tubesAx[i], tubesAy[i],               // Coordinates
                0,                          // Priority
-               2,                          // Palette to use
-               SpriteSize_16x32,           // Sprite size
+               0,                          // Palette to use
+               SpriteSize_32x64,           // Sprite size
                SpriteColorFormat_256Color, // Color format
                tube,                        // Loaded graphic to display
                -1,                         // Affine rotation to use (-1 none)
@@ -152,8 +152,8 @@ void P_GL_updateGame()
                2,                          // Number of sprite
                tubesAx[0], tubesAy[0],               // Coordinates
                0,                          // Priority
-               2,                          // Palette to use
-               SpriteSize_16x32,           // Sprite size
+               0,                          // Palette to use
+               SpriteSize_32x64,           // Sprite size
                SpriteColorFormat_256Color, // Color format
                tube,                        // Loaded graphic to display
                -1,                         // Affine rotation to use (-1 none)
@@ -167,8 +167,8 @@ void P_GL_updateGame()
                2,                          // Number of sprite
                tubesAx[0], tubesAy[0],               // Coordinates
                0,                          // Priority
-               2,                          // Palette to use
-               SpriteSize_16x32,           // Sprite size
+               0,                          // Palette to use
+               SpriteSize_32x64,           // Sprite size
                SpriteColorFormat_256Color, // Color format
                tube,                        // Loaded graphic to display
                -1,                         // Affine rotation to use (-1 none)
@@ -202,7 +202,7 @@ void P_GL_updateGame()
            1,                          // Number of sprite
            0, 0,               // Coordinates
            0,                          // Priority
-           1,                          // Palette to use
+           0,                          // Palette to use
            SpriteSize_64x32,           // Sprite size
            SpriteColorFormat_256Color, // Color format
            over,                        // Loaded graphic to display

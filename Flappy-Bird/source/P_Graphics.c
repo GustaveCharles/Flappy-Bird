@@ -49,16 +49,16 @@ void P_Graphics_setup_sprites(){
 	//Allocate space for the graphic to show in the sprite
 	gfx = oamAllocateGfx(&oamMain, SpriteSize_32x32, SpriteColorFormat_256Color);
 	over = oamAllocateGfx(&oamMain, SpriteSize_64x32, SpriteColorFormat_256Color);
-	tube = oamAllocateGfx(&oamMain, SpriteSize_16x32, SpriteColorFormat_256Color);
+	tube = oamAllocateGfx(&oamMain, SpriteSize_32x64, SpriteColorFormat_256Color);
 
 	//Copy data for the graphic (palette and bitmap)
 	swiCopy(birdPal, SPRITE_PALETTE, birdPalLen/2);
 	swiCopy(birdTiles, gfx, birdTilesLen/2);
 
-	swiCopy(overPal, &SPRITE_PALETTE[birdPalLen], overPalLen/2);
+	swiCopy(overPal, SPRITE_PALETTE + birdPalLen, overPalLen/2);
 	swiCopy(overTiles, over, overTilesLen/2);
 
-	swiCopy(pipePal, &SPRITE_PALETTE[birdPalLen + overPalLen], pipePalLen/2);
+	swiCopy(pipePal, SPRITE_PALETTE + (birdPalLen + overPalLen)/2, pipePalLen/2);
 	swiCopy(pipeTiles, tube, pipeTilesLen/2);
 
 
